@@ -23,9 +23,10 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
+ * Encapsulate an {@link InventoryStructure} along with indexes on resource types and metric types
  * @author Joel Takvorian
  */
-public class ExtendedInventoryStructure {
+public class IndexedInventoryStructure {
     @JsonProperty("inventoryStructure")
     private final InventoryStructure<?> structure;
     @JsonProperty("typesIndex")
@@ -34,15 +35,15 @@ public class ExtendedInventoryStructure {
     private final Map<String, Collection<String>> metricTypesIndex;
 
     @JsonCreator
-    public ExtendedInventoryStructure(@JsonProperty("inventoryStructure") InventoryStructure<?> structure,
-                                      @JsonProperty("typesIndex") Map<String, Collection<String>> typesIndex,
-                                      @JsonProperty("metricTypesIndex") Map<String, Collection<String>> metricTypesIndex) {
+    public IndexedInventoryStructure(@JsonProperty("inventoryStructure") InventoryStructure<?> structure,
+                                     @JsonProperty("typesIndex") Map<String, Collection<String>> typesIndex,
+                                     @JsonProperty("metricTypesIndex") Map<String, Collection<String>> metricTypesIndex) {
         this.structure = structure;
         this.typesIndex = typesIndex;
         this.metricTypesIndex = metricTypesIndex;
     }
 
-    public ExtendedInventoryStructure(InventoryStructure<?> structure) {
+    public IndexedInventoryStructure(InventoryStructure<?> structure) {
         this.structure = structure;
         this.typesIndex = null;
         this.metricTypesIndex = null;
